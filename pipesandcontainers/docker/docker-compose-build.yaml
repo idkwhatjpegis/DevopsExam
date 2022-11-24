@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+    producer:
+             build: 
+                 dockerfile: generator/Dockerfile
+             networks:
+                 - exam-net
+    storage:
+             build: 
+                 dockerfile: storage/Dockerfile
+        
+             networks:
+                 - exam-net
+             environment:
+                 MYSQL_ROOT_PASSWORD: "ExamPa$$w0rd"
+             ports:
+                   -3306:3306
+    consumer:
+             build: 
+                 dockerfile: client/Dockerfile
+             networks:
+                 - exam-net
+             ports: 
+                   -8080:5000    
+networks:
+    app-net:

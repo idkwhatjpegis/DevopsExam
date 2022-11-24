@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+    producer:
+        image: semerdzhiev/exam-producer
+        networks:
+            - app-net
+        depends_on:
+            - storage
+    storage:
+        image: semerdzhiev/exam-storage
+        networks:
+            - app-net
+        environment:
+            MYSQL_ROOT_PASSWORD: "Exam-2021"
+    consumer:
+        image: semerdzhiev/exam-consumer
+        networks:
+            - app-net
+        ports: 8080:5000
+        depends_on:
+            - storage
+networks:
+    app-net:
