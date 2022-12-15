@@ -1,5 +1,4 @@
 # DevopsProject
-DevopsExam
 The goal is to have the whole infrastructure as a file or set of files. 
 Then on top of it to create an automated build process which will wait for a hook call by the source control system and if there is a change in the project then all related images should be re-build and re-run
 Infrastructure :
